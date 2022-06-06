@@ -1,0 +1,27 @@
+#Common packages to install on all of our machines.
+common_packages:
+    - python-is-python3
+    - vim
+    - acl
+    - git
+    - build-essential
+    - python3-dev
+    - libcurl4-openssl-dev
+    - libgnutls28-dev
+    - libssl-dev
+    - python3-virtualenv
+    - python3-pip
+    - htop
+    - nfs-common
+    - atop
+    - speedometer
+    - byobu
+    - apt-transport-https
+    - tar
+    - bzip2
+    - libgl1-mesa-glx
+    - unzip
+    - tree
+    - python3-passlib
+    - xfsprogs
+    - jq

@@ -1,0 +1,58 @@
+# Python 3 support
+pip_virtualenv_command: /usr/bin/python3 -m virtualenv # usegalaxy_eu.certbot, usegalaxy_eu.tiaas2, galaxyproject.galaxy
+certbot_virtualenv_package_name: python3-virtualenv    # usegalaxy_eu.certbot
+pip_package: python3-pip                               # geerlingguy.pip
+
+# PostgreSQL
+postgresql_objects_users:
+  - name: galaxy
+postgresql_objects_databases:
+  - name: galaxy
+    owner: galaxy
+# PostgreSQL Backups
+postgresql_backup_dir: /data/backups
+postgresql_backup_local_dir: "{{ '~postgres' | expanduser }}/backups"
+
+# Galaxy
+galaxy_create_user: true
+galaxy_separate_privileges: true
+galaxy_manage_paths: true
+galaxy_layout: root-dir
+galaxy_root: /mnt/galaxy
+galaxy_user: {name: galaxy, shell: /bin/bash}
+galaxy_commit_id: dev
+galaxy_force_checkout: true
+miniconda_prefix: "{{ galaxy_tool_dependency_dir }}/_conda"
+miniconda_version: 4.7.12
+miniconda_manage_dependencies: false
+galaxy_config_perms: 0644
+galaxy_systemd_mode: gravity
+
+
+galaxy_config:
+  gravity:
+    galaxy_root: /mnt/galaxy
+    app_server: gunicorn
+    gunicorn:
+      # listening options
+      bind: '127.0.0.1:8080'
+      # performance options
+      workers: 1
+      # Other options that will be passed to gunicorn
+      extra_args: ""
+      preload: true
+    celery:
+      concurrency: 2
+      loglevel: DEBUG
+    
+
+
+  galaxy:
+    brand: "🧬🔬🚀"
+    admin_users: simon.gladman@unimelb.edu.au
+    database_connection: "postgresql:///galaxy?host=/var/run/postgresql"
+    file_path: /data
+    check_migrate_tools: false
+    tool_data_path: "{{ galaxy_mutable_data_dir }}/tool-data"
+    object_store_store_by: uuid
+    id_secret: "{{ vault_id_secret }}"
