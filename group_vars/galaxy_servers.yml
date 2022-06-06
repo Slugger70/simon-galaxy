@@ -31,7 +31,7 @@ galaxy_systemd_mode: gravity
 
 galaxy_config:
   gravity:
-    galaxy_root: /mnt/galaxy
+    galaxy_root: /mnt/galaxy/server
     app_server: gunicorn
     gunicorn:
       # listening options
