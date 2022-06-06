@@ -25,11 +25,13 @@ galaxy_force_checkout: true
 miniconda_prefix: "{{ galaxy_tool_dependency_dir }}/_conda"
 miniconda_version: 4.7.12
 miniconda_manage_dependencies: false
+#Additions for the gravity part of the course
 galaxy_config_perms: 0644
 galaxy_systemd_mode: gravity
 
 
 galaxy_config:
+  #all of this is instead of the uwsgi setup
   gravity:
     galaxy_root: /mnt/galaxy/server
     app_server: gunicorn
