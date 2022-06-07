@@ -8,7 +8,7 @@
       package:
         name: 'python3-psycopg2'
         state: latest
-    - name: instal common Dependencies
+    - name: install Common Dependencies
       package:
         name: "{{ common_packages }}"
         state: latest
@@ -22,3 +22,4 @@
     - role: uchida.miniconda
       become: true
       become_user: "{{ galaxy_user.name }}"
+    - galaxyproject.nginx
