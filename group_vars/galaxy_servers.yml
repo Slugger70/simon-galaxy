@@ -39,11 +39,11 @@ galaxy_config:
     app_server: gunicorn
     gunicorn:
       # listening options
-      bind: '127.0.0.1:8080'
+      bind: "unix:{{ galaxy_mutable_config_dir }}/gunicorn.sock"
       # performance options
       workers: 2
       # Other options that will be passed to gunicorn
-      extra_args: ""
+      extra_args: '--forwarded-allow-ips="*"'
       preload: true
     celery:
       concurrency: 2
